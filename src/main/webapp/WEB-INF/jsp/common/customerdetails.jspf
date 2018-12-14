@@ -1,0 +1,47 @@
+<h3>Customer on Google Maps</h3>
+
+<div id="map" style="height: 400px; width: 100%"></div>
+<div>
+	<input id="address" type="text" value="6, Rosemount Business Park, Ballycoolin Rd, Rosemount Park drive, Grange, Dublin 11"> 
+	
+</div>
+<script>
+    // part of this code was taken from 
+    // https://developers.google.com/maps/documentation/javascript/geocoding#GetStarted
+    var geocoder;
+    var map;
+    var coords;
+    function initialize() {
+      var address = document.getElementById('address').value;
+      getCoordinates(address, function(coords){
+    	  
+            var mapOptions = {
+          	      zoom: 12,
+          	      center: coords,//new google.maps.LatLng(coords[0],coords[1]),
+          	      mapTypeId: google.maps.MapTypeId.ROADMAP
+          	};
+            var marker = new google.maps.Marker({
+                map: map,
+                position: coords
+            });
+          
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            marker.setMap(map);
+        });
+      }
+    
+    
+	function getCoordinates(address, callback){
+		 geocoder = new google.maps.Geocoder();
+	   
+	     geocoder.geocode({address: address}, function(results,status){
+	    	 coords_ob = results[0].geometry.location;
+	    	 callback(coords_ob);
+	     });
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+  
+    </script>
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMNXuwqqt9X7NivW5_fIiBWZ2QZibITak&callback=initialize">
+    </script>

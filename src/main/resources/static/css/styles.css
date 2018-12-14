@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+
+.text-warning{
+	text-color:red;
+}
+.form-horizontal{
+	text-align:left;
+	}
+.label{
+	text-align:left;
+    }
+    
+.search{
+	float:right;
+}
