@@ -12,6 +12,7 @@ import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Index;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.Store;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Indexed
 @Entity
@@ -20,6 +21,7 @@ public class Customer {
 	@Id
 	@Column(name="customer_id")
 	@GeneratedValue
+	@NotEmpty
 	private int customer_id;
 	
 	@Column(name="customer_name")
